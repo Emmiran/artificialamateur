@@ -1,13 +1,13 @@
 ---
 import { PROGRESS_ITEMS } from '../consts';
 
-const items = PROGRESS_ITEMS.join('   •   ');
+const itemsHtml = PROGRESS_ITEMS.join('   •   ');
 ---
 
 <div class="ticker" role="marquee" aria-label="Project progress updates">
 	<div class="ticker-track">
-		<span class="ticker-content">{items}</span>
-		<span class="ticker-content" aria-hidden="true">{items}</span>
+		<span class="ticker-content" set:html={itemsHtml} />
+		<span class="ticker-content" aria-hidden="true" set:html={itemsHtml} />
 	</div>
 </div>
 
@@ -28,6 +28,14 @@ const items = PROGRESS_ITEMS.join('   •   ');
 		font-size: 0.9em;
 		font-weight: 600;
 		letter-spacing: 0.02em;
+	}
+	.ticker-content :global(.num-red) {
+		color: #d40000;
+		font-weight: 800;
+	}
+	.ticker-content :global(.num-green) {
+		color: #007a2f;
+		font-weight: 800;
 	}
 	@keyframes scroll {
 		from {
