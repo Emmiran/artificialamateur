@@ -1,0 +1,45 @@
+---
+import { PROGRESS_ITEMS } from '../consts';
+
+const items = PROGRESS_ITEMS.join('   •   ');
+---
+
+<div class="ticker" role="marquee" aria-label="Project progress updates">
+	<div class="ticker-track">
+		<span class="ticker-content">{items}</span>
+		<span class="ticker-content" aria-hidden="true">{items}</span>
+	</div>
+</div>
+
+<style>
+	.ticker {
+		overflow: hidden;
+		background: var(--accent);
+		white-space: nowrap;
+		padding: 0.6em 0;
+	}
+	.ticker-track {
+		display: inline-flex;
+		animation: scroll 45s linear infinite;
+	}
+	.ticker-content {
+		padding-right: 3em;
+		color: white;
+		font-size: 0.9em;
+		font-weight: 600;
+		letter-spacing: 0.02em;
+	}
+	@keyframes scroll {
+		from {
+			transform: translateX(0);
+		}
+		to {
+			transform: translateX(-50%);
+		}
+	}
+	@media (prefers-reduced-motion: reduce) {
+		.ticker-track {
+			animation: none;
+		}
+	}
+</style>
