@@ -4,7 +4,8 @@ const today = new Date();
 ---
 
 <footer>
-	&copy; {today.getFullYear()} {SITE_TITLE}. All rights reserved.
+	<p>&copy; {today.getFullYear()} {SITE_TITLE}. All rights reserved.</p>
+	<p>Contact: <a href="mailto:hello@artificialamateur.com">hello@artificialamateur.com</a></p>
 </footer>
 <style>
 	footer {
@@ -12,5 +13,17 @@ const today = new Date();
 		background: linear-gradient(var(--gray-gradient)) no-repeat;
 		color: rgb(var(--gray));
 		text-align: center;
+	}
+	footer p {
+		margin: 0;
+	}
+	footer p + p {
+		margin-top: 0.5em;
+	}
+	footer a {
+		color: rgb(var(--gray));
+	}
+	footer a:hover {
+		color: var(--accent);
 	}
 </style>
