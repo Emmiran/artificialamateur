@@ -1,6 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import Logo from '../assets/logo.png';
+import Robot from '../assets/robot.png';
 import { SITE_TITLE } from '../consts';
 import HeaderLink from './HeaderLink.astro';
 ---
@@ -10,10 +11,13 @@ import HeaderLink from './HeaderLink.astro';
 		<a href="/" class="logo" aria-label={SITE_TITLE}>
 			<Image src={Logo} alt="" width={480} height={320} />
 		</a>
-		<div class="internal-links">
-			<HeaderLink href="/">Home</HeaderLink>
-			<HeaderLink href="/blog">Blog</HeaderLink>
-			<HeaderLink href="/about">About</HeaderLink>
+		<div class="nav-right">
+			<div class="internal-links">
+				<HeaderLink href="/">Home</HeaderLink>
+				<HeaderLink href="/blog">Blog</HeaderLink>
+				<HeaderLink href="/about">About</HeaderLink>
+			</div>
+			<Image src={Robot} alt="" class="robot" width={400} height={437} />
 		</div>
 	</nav>
 </header>
@@ -36,6 +40,16 @@ import HeaderLink from './HeaderLink.astro';
 	.logo img {
 		display: block;
 		height: 132px;
+		width: auto;
+	}
+	.nav-right {
+		display: flex;
+		align-items: center;
+		gap: 1em;
+	}
+	.robot {
+		display: block;
+		height: 110px;
 		width: auto;
 	}
 	nav a {
