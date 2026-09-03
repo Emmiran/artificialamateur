@@ -51,27 +51,70 @@ const postsWithContent = await Promise.all(
 			.prose {
 				color: rgb(var(--gray-dark));
 			}
+			.expand-btn {
+				display: block;
+				margin: 1em auto 0 auto;
+				padding: 0.5em 1.25em;
+				font-family: inherit;
+				font-size: 0.9em;
+				font-weight: 600;
+				color: var(--accent);
+				background: none;
+				border: 1px solid var(--accent);
+				border-radius: 999px;
+				cursor: pointer;
+			}
+			.expand-btn:hover {
+				color: white;
+				background: var(--accent);
+			}
+			:global(.post-body.collapsed > *:not(:first-child)) {
+				display: none;
+			}
 		</style>
 	</head>
 	<body>
 		<Header />
 		<main>
 			{
-				postsWithContent.map(({ post, Content }) => (
-					<article class="post">
-						<h2 class="title">
-							<a href={`/blog/${post.id}/`}>{post.data.title}</a>
-						</h2>
-						<p class="date">
-							<FormattedDate date={post.data.pubDate} />
-						</p>
-						<div class="prose">
-							<Content />
-						</div>
-					</article>
-				))
+				postsWithContent.map(({ post, Content }, index) => {
+					const collapsible = index !== 0;
+					const bodyId = `post-body-${post.id}`;
+					return (
+						<article class="post">
+							<h2 class="title">
+								<a href={`/blog/${post.id}/`}>{post.data.title}</a>
+							</h2>
+							<p class="date">
+								<FormattedDate date={post.data.pubDate} />
+							</p>
+							<div id={bodyId} class:list={['prose', 'post-body', { collapsed: collapsible }]}>
+								<Content />
+							</div>
+							{collapsible && (
+								<button class="expand-btn" data-target={bodyId} aria-expanded="false">
+									Expand post ↓
+								</button>
+							)}
+						</article>
+					);
+				})
 			}
 		</main>
 		<Footer />
+		<script>
+			document.querySelectorAll('.expand-btn').forEach((btn) => {
+				btn.addEventListener('click', () => {
+					const targetId = btn.dataset.target;
+					if (!targetId) return;
+					const target = document.getElementById(targetId);
+					if (!target) return;
+					target.classList.toggle('collapsed');
+					const isCollapsed = target.classList.contains('collapsed');
+					btn.textContent = isCollapsed ? 'Expand post ↓' : 'Collapse post ↑';
+					btn.setAttribute('aria-expanded', String(!isCollapsed));
+				});
+			});
+		</script>
 	</body>
 </html>
