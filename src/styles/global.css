@@ -21,8 +21,12 @@ body {
 	margin: 0;
 	padding: 0;
 	text-align: left;
-	background: linear-gradient(var(--gray-gradient)) no-repeat;
-	background-size: 100% 600px;
+	background-image:
+		url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cg fill='none' stroke='%232337ff' stroke-width='1.5' opacity='0.07'%3E%3Cpath d='M20 20h40v40h40'/%3E%3Cpath d='M140 40v50h-40'/%3E%3Cpath d='M20 120h30v30'/%3E%3Cpath d='M100 130h40v30'/%3E%3Cpath d='M0 80h20'/%3E%3Cpath d='M160 100h-20v20'/%3E%3C/g%3E%3Cg fill='%232337ff' opacity='0.09'%3E%3Ccircle cx='20' cy='20' r='3'/%3E%3Ccircle cx='60' cy='60' r='3'/%3E%3Ccircle cx='100' cy='60' r='3'/%3E%3Ccircle cx='140' cy='40' r='3'/%3E%3Ccircle cx='100' cy='90' r='3'/%3E%3Ccircle cx='50' cy='120' r='3'/%3E%3Ccircle cx='50' cy='150' r='3'/%3E%3Ccircle cx='140' cy='130' r='3'/%3E%3Ccircle cx='20' cy='80' r='2.5'/%3E%3Ccircle cx='140' cy='120' r='2.5'/%3E%3C/g%3E%3C/svg%3E"),
+		linear-gradient(var(--gray-gradient));
+	background-repeat: repeat, no-repeat;
+	background-size: 160px 160px, 100% 600px;
+	background-position: top left, top left;
 	word-wrap: break-word;
 	overflow-wrap: break-word;
 	color: rgb(var(--gray-dark));
