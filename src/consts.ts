@@ -7,7 +7,7 @@ export const SITE_DESCRIPTION = 'One amateur\'s journey learning to use AI — n
 // Shown in the scrolling progress bar under the header. Each entry is raw
 // HTML — use <span class="num-red"> / <span class="num-green"> to color numbers.
 export const PROGRESS_ITEMS = [
-	'Projects Started <span class="num-red">2</span>/<span class="num-green">10</span>',
+	'Projects Started <span class="num-red">3</span>/<span class="num-green">10</span>',
 	'Projects Killed <span class="num-red">1</span>',
 	'Hours Completed <span class="num-red">6</span>/<span class="num-green">100</span>',
 	'Budget Spent <span class="num-green">$73.79</span>/<span class="num-green">$2,000</span>',
